@@ -40,9 +40,10 @@ Follow the steps below ,
 	  },
 	  "language": "javascript"
 	}
-	```
+	
+    ```
 
-5. In the above created db we have to add messages for each emotions - `Fear, Sadness, andDisgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
+ 5. In the above created db we have to add messages for each emotions - `Fear, Sadness, andDisgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
 
 	```
 	{
