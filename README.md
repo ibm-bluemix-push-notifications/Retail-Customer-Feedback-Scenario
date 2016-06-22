@@ -52,7 +52,6 @@ Follow the steps below ,
 ```
 
 ## Sending Push Notifications
-{: #action parameters}
 
   The `sendFeedback.js` file will need the following parameters to complete the actions. 
 
@@ -84,31 +83,28 @@ OpenWhisk you have to get the auth from the [Bluemix OpenWhisk](https://new-cons
 
 1. In your Cloudant create one more database named `complaints`.
 
-2. Create an `action` using the following command,
+2. Create an `action` using the following command.
 
-``` 
-wsk action update  yourActionName sendFeedback.js -p version '' -p cloudantUserName '' -p cloudantPassword '' -p appSecret '' -p appId '' -p appRegion '.ng.bluemix.net' 
-```
+	``` 
+	wsk action update  yourActionName sendFeedback.js -p version '' -p cloudantUserName '' -p cloudantPassword '' -p appSecret '' -p appId '' -p appRegion '.ng.bluemix.net' 
+	```
 
-3. Create a `Trigger` ,
+3. Create a `Trigger`.
 
-```
-wsk trigger create yourTriggerName --feed /yourNameSpace/CloudantPackage/changes -p dbname complaints -p includeDoc true -p username 'cloudantUsername' -p password 'cloudantPassword' -p host 'cloudantUsername.cloudant.com'
+	```
+	wsk trigger create yourTriggerName --feed /yourNameSpace/CloudantPackage/changes -p dbname complaints -p includeDoc true -p username 'cloudantUsername' -p password 'cloudantPassword' -p host 'cloudantUsername.cloudant.com'
+	
+	```
+4. Create Rule and join the `yourActionName` and `yourTriggerName`.
 
-```
-
-4. Create Rule and join the `yourActionName` and `yourTriggerName`
-
-```
-wsk rule create --enable yourRule yourTriggerName yourActionName
-```
-
+	```
+	wsk rule create --enable yourRule yourTriggerName yourActionName
+	```
 5. Enable the activation Poll.
 
-```
-wsk activation poll
-```
-
+	```
+	wsk activation poll
+	```
 6. Follow the steps in the [Example app](https://github.com/ibm-bluemix-push-notifications/mood-based-push-sample/tree/development/Example) to run the Application.
 
 ### License
