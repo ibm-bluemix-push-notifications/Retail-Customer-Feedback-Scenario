@@ -44,12 +44,12 @@ Follow the steps below ,
 
 5. In the above created db we have to add messages for each emotions - `Fear, Sadness, Disgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
 
-```
-{
-  "mood": "Joy",
-  "message": "thank you very much for your valuable feedback. We are extremely happy to here from you. Come back again have a wonderfull shopping experience with us."
-}
-```
+	```
+	{
+	  "mood": "Joy",
+	  "message": "thank you very much for your valuable feedback. We are extremely happy to here from you. Come back again have a wonderfull shopping experience with us."
+	}
+	```
 
 ## Sending Push Notifications
 
