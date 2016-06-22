@@ -23,26 +23,26 @@ Follow the steps below ,
 
  4. Click on the new design document you created in above step and Edit it with the below lines. You do not have to change the `_id` and `_rev` values.
 
- ```
- {
-  "_id": "_design/moodPick",
-  "_rev": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-  "indexes": {
-    "fields": {
-      "analyzer": "keyword",
-      "index": "function(doc) {index(\"default\", doc._id, {\"facet\": true});if ((doc.mood) || (doc.mood===0)){index(\"doc.mood\", doc.mood);}if ((doc.message) || (doc.message===0)){index(\"message\", doc.message);}}"
-    }
-  },
-  "views": {
-    "new_view": {
-      "map": "function (doc) { emit(doc.mood,doc.message);}"
-    }
-  },
-  "language": "javascript"
-}
-```
+	```
+	 {
+	  "_id": "_design/moodPick",
+	  "_rev": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+	  "indexes": {
+	    "fields": {
+	      "analyzer": "keyword",
+	      "index": "function(doc) {index(\"default\", doc._id, {\"facet\": true});if ((doc.mood) || (doc.mood===0)){index(\"doc.mood\", doc.mood);}if ((doc.message) || (doc.message===0)){index(\"message\", doc.message);}}"
+	    }
+	  },
+	  "views": {
+	    "new_view": {
+	      "map": "function (doc) { emit(doc.mood,doc.message);}"
+	    }
+	  },
+	  "language": "javascript"
+	}
+	```
 
-5. In the above created db we have to add messages for each emotions - `Fear, Sadness, Disgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
+5. In the above created db we have to add messages for each emotions - `Fear, Sadness, andDisgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
 
 	```
 	{
