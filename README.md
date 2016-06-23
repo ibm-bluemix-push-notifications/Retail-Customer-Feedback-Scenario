@@ -6,6 +6,7 @@ Mood-based-push-sample
 
    ![Alt text](images/flowchart.png?raw=true "Optional Title")
 
+
 ## OverView
  
 The Mood-based-push-sample impliments the core features of the scenario described above. It showcases OpenWhisk, Watson APIs, Cloudant with Bluemix Push Notifications Service and demonstrates mobile integration capabilities. The Feedback app will register a feedback on recent purchased item to the cloudant `complaints` database. The openWhisk will read the changes in the `complaints` and will send the data to Watson Tone Analyzer. The tone analyzer will send back the results to openwhisk , by analyzing the result openWhisk will fetch appropriate message from cloudant `moods` database and constructs a valid message . This message get pushed to `IBM Push Notification Service` and deliver to the mobile device.
