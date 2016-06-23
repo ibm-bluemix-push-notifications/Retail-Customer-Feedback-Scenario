@@ -78,7 +78,7 @@ class ViewController: UIViewController {
             }
         )
         let cancelAction1 = NYAlertAction(
-            title: "Done",
+            title: "Now",
             style: .Cancel,
             handler: { (action: NYAlertAction!) -> Void in
                 self.dismissViewControllerAnimated(true, completion: nil)

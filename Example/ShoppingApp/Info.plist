@@ -20,8 +20,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>CloudantName</key>
-	<string>complaints</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -47,5 +45,7 @@
 	<string></string>
 	<key>cloudantUserName</key>
 	<string></string>
+	<key>CloudantName</key>
+	<string>complaints</string>
 </dict>
 </plist>

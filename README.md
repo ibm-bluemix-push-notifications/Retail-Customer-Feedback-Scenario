@@ -4,10 +4,12 @@ Mood-based-push-sample
  Mood based push sample is an intuitive example usage of [Bluemix push notification Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watsone Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
 
 
-## Contents
+   ![Alt text](images/flowchart.png?raw=true "Optional Title")
 
- This repository contains the Node.js file and an example [iOS app](https://github.com/ibm-bluemix-push-notifications/mood-based-push-sample/tree/development/Example).
-
+## OverView
+ 
+The Mood-based-push-sample impliments the core features of the scenario described above. It showcases OpenWhisk, Watson APIs, Cloudant with Bluemix Push Notifications Service and demonstrates mobile integration capabilities. The Feedback app will register a feedback on recent purchased item to the cloudant `complaints` database. The openWhisk will read the changes in the `complaints` and will send the data to Watson Tone Analyzer. The tone analyzer will send back the results to openwhisk , by analyzing the result openWhisk will fetch appropriate message from cloudant `moods` database and constructs a valid message . This message get pushed to `IBM Push Notification Service` and deliver to the mobile device.
+ 
 
 ## Requirements
 
@@ -51,6 +53,8 @@ Follow the steps below ,
 	  "message": "thank you very much for your valuable feedback. We are extremely happy to here from you. Come back again have a wonderfull shopping experience with us."
 	}
 	```
+6. In your Cloudant create one more database named `complaints`.
+
 
 ## Sending Push Notifications
 
@@ -71,6 +75,7 @@ Follow the steps below ,
 - `appRegion` - Region where your bluemix app is hosted. Eg for US Dallas -`.ng.bluemix.net`.
 
 - `deviceIds` - The deviceId to which the message need to be send. This data will come from the `complaints` database.
+- `name` - Name of the customer. This data will come from the `complaints` database.
 
 
 ### Setup the OPenWhisk.
@@ -82,31 +87,40 @@ OpenWhisk you have to get the auth from the [Bluemix OpenWhisk](https://new-cons
   The example app have Feedback sending feature. The following setup needed for running the example app.
 
 
-1. In your Cloudant create one more database named `complaints`.
-
-2. Create an `action` using the following command.
+1. Create an `action` using the following command.
 
 	``` 
-	wsk action update  yourActionName sendFeedback.js -p version '' -p cloudantUserName '' -p cloudantPassword '' -p appSecret '' -p appId '' -p appRegion '.ng.bluemix.net' 
+	wsk action update  yourActionName sendFeedback.js -p version 'toneAnalyserVersion' -p cloudantUserName '' -p cloudantPassword '' -p appSecret '' -p appId '' -p appRegion '.ng.bluemix.net' 
 	```
 
-3. Create a `Trigger`.
+2. Create a `Trigger`.
 
 	```
 	wsk trigger create yourTriggerName --feed /yourNameSpace/CloudantPackage/changes -p dbname complaints -p includeDoc true -p username 'cloudantUsername' -p password 'cloudantPassword' -p host 'cloudantUsername.cloudant.com'
 	
 	```
-4. Create Rule and join the `yourActionName` and `yourTriggerName`.
+3. Create Rule and join the `yourActionName` and `yourTriggerName`.
 
 	```
 	wsk rule create --enable yourRule yourTriggerName yourActionName
 	```
-5. Enable the activation Poll.
+4. Enable the activation Poll.
 
 	```
 	wsk activation poll
 	```
-6. Follow the steps in the [Example app](https://github.com/ibm-bluemix-push-notifications/mood-based-push-sample/tree/development/Example) to run the Application.
+5. Open the Example app in `XCode.app`. Go to the `Info.plist` file and add values for `cloudantPermission` and `cloudantUserName`. 
+    
+    ![Alt text](images/plist.png?raw=true "Optional Title")
+
+6. Do `carthage update` in the application to add the [Bluemix Push service SDK](https://github.com/ibm-bluemix-mobile-services/bms-clientsdk-swift-push).
+
+7. Run the application and register for push notification and close the app.
+
+8. Reopen the app again, it will ask for Feedback, go to the feedback page send a feed back.
+
+9. You will get push notification as feedback response. 
+
 
 ### License
 
