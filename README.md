@@ -32,7 +32,7 @@ Follow the steps below ,
 	  "indexes": {
 	    "fields": {
 	      "analyzer": "keyword",
-	      "index": "function(doc) {index(\"default\", doc._id, {\"facet\": true});if ((doc.mood) || (doc.mood===0)){index(\"doc.mood\", doc.mood);}if ((doc.message) || (doc.message===0)){index(\"message\", doc.message);}}"
+	      "index": "function(doc) {index("default", doc._id, {"facet": true});if ((doc.mood) || (doc.mood===0)){index("doc.mood", doc.mood);}if ((doc.message) || (doc.message===0)){index("message", doc.message);}}"
 	    }
 	  },
 	  "views": {
@@ -97,7 +97,6 @@ OpenWhisk you have to get the auth from the [Bluemix OpenWhisk](https://new-cons
 
 	```
 	wsk trigger create yourTriggerName --feed /yourNameSpace/CloudantPackage/changes -p dbname complaints -p includeDoc true -p username 'cloudantUsername' -p password 'cloudantPassword' -p host 'cloudantUsername.cloudant.com'
-	
 	```
 3. Create Rule and join the `yourActionName` and `yourTriggerName`.
 
