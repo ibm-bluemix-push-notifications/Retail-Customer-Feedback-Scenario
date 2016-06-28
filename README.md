@@ -1,7 +1,7 @@
 Mood-based-push-sample
 ===========================================
 
- Mood based push sample is an intuitive example usage of [Bluemix push notification Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watsone Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
+ Mood based push sample is an intuitive example usage of [Bluemix push notification Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watson Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
 
 
    ![Alt text](images/flowchart.png?raw=true "Optional Title")
