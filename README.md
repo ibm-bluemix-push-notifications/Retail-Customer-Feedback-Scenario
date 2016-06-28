@@ -56,7 +56,7 @@ Follow the steps below ,
 	  "message": "thank you very much for your valuable feedback. We are extremely happy to here from you. Come back again have a wonderfull shopping experience with us."
 	}
 	```
-6. In your Cloudant create one more database named `complaints`.
+ 6. In your Cloudant create one more database named `complaints`.
 
 
 ## Sending Push Notifications
