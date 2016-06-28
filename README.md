@@ -113,7 +113,7 @@ OpenWhisk you have to get the auth from the [Bluemix OpenWhisk](https://new-cons
 	```
 5. Open the Example app in `XCode.app`. Go to the `Info.plist` file and add values for `cloudantPermission` and `cloudantUserName`. 
     
-    ![Alt text](images/plist.png?raw=true "Optional Title")
+    ![Alt text](Resource/plist.png?raw=true "Optional Title")
 
 6. Do `carthage update` in the application to add the [Bluemix Push service SDK](https://github.com/ibm-bluemix-mobile-services/bms-clientsdk-swift-push).
 
