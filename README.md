@@ -6,7 +6,7 @@ Mood-based-push-sample
 
    ![Alt text](Resource/flowchart.png?raw=true "Optional Title")
 
-   [![Alt Demo video]((Resource/video.png?raw=true "Optional Title"))](https://youtu.be/9Qx91S2ZO6I)
+   [![Alt Demo video](Resource/video.png)](https://youtu.be/9Qx91S2ZO6I)
    
 
 ## Overview
