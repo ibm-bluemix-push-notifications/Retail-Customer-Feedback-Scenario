@@ -81,7 +81,7 @@ Follow the steps below ,
 - `name` - Name of the customer. This data will come from the `complaints` database.
 
 
-### Setup the OPenWhisk.
+### Setup the OpenWhisk.
 
 OpenWhisk you have to get the auth from the [Bluemix OpenWhisk](https://new-console.ng.bluemix.net/openwhisk/cli). Setup OpneWhisk CLI and Auth for OpenWhisk.
 
