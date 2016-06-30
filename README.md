@@ -1,7 +1,7 @@
-Mood-based-push-sample
+Mood-based push sample
 ===========================================
 
- Mood based push sample is an intuitive example usage of [Bluemix P ush Notifications Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watson Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
+ The mood-based push sample is an intuitive example usage of [Bluemix Push Notifications Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watson Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
 
 
    ![Alt text](Resource/flowchart.png?raw=true "Optional Title")
@@ -11,22 +11,22 @@ Mood-based-push-sample
 
 ## Overview
  
-The Mood-based-push-sample implements the core features of the scenario described above. It showcases OpenWhisk, Watson APIs, Cloudant with Bluemix Push Notifications Service and demonstrates mobile integration capabilities. The Feedback app will register a feedback on recent purchased item to the cloudant `complaints` database. The openWhisk will read the changes in the `complaints` and will send the data to Watson Tone Analyzer. The Tone Analyzer will send back the results to OpenWhisk , by analyzing the result OpenWhisk will fetch appropriate message from Cloudant `moods` database and constructs a valid message . This message get pushed to `IBM Push Notifications Service` and deliver to the mobile device.
+The mood-based push sample implements the core features of the scenario described above. It showcases OpenWhisk, Watson APIs, and Cloudant with Bluemix Push Notifications service and demonstrates mobile integration capabilities. The Feedback app will register a feedback on the recently purchased items to the cloudant `complaints` database. The OpenWhisk will read changes in the `complaints` and will send data to Watson Tone Analyzer. The Tone Analyzer will send back the results to OpenWhisk. By analyzing the results, OpenWhisk will fetch appropriate message from Cloudant `moods` database and construct a valid message. This message gets pushed to `IBM Push Notifications service`, and is delivered to the mobile device.
  
 
 ## Requirements
 
 ### Setup Bluemix and Cloudant.
 
-Follow the steps below ,
+Complete the steps:
 
  1. Create a [Bluemix Application](http://console.ng.bluemix.net). Configure the Bluemix Push Notifications service.
 
- 2. Create and Bind a Watson Tone Analyzer Service to your application.
+ 2. Create and bind a Watson Tone Analyzer Service to your application.
 
- 3. Create a database named Mood in your [Cloudant](https://cloudant.com/). In the `mood` database create a view named `new_view` and design named `moodPick`.
+ 3. Create a database named `mood` in your [Cloudant](https://cloudant.com/). In the `mood` database, create a view named `new_view` and design named `moodPick`.
 
- 4. Click on the new design document you have created in previous step and edit it with the below given lines. Do not have to change the `_id` and `_rev` values.
+ 4. Click the new design document you have created in step 3 and update it with the following lines. Do not have to change the `_id` and `_rev` values.
 
 	```
 	 {
@@ -48,7 +48,7 @@ Follow the steps below ,
 	
     ```
 
- 5. In the above created add messages for each emotions - `Fear, Sadness, andDisgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
+ 5. To the updated new design document, add messages for each emotions - `Fear, Sadness, andDisgust, Anger and Joy` (Watson Tone Analyzer outputs). For example,
 
 	```
 	{
@@ -61,36 +61,36 @@ Follow the steps below ,
 
 ## Sending Push Notifications
 
-  The `sendFeedback.js` file will need the following parameters to complete the actions. 
+  The `sendFeedback.js` file need the following parameters to complete the actions. 
 
 - `appId` - Bluemix app GUID.
 
-- `appSecret` - Bluemix Push Service appSecret.
+- `appSecret` - Bluemix Push Notification service appSecret.
 
-- `version` - This is the version of the Tone analyzer service .
+- `version` - This is the version of the Tone Analyzer service .
 
 - `message` - The test value that is passing to the Tone Analyzer service as user Input.
 
-- `cloudantUserName` - Your cloudant username. This is for accessing your `mood` database in cloudant.
+- `cloudantUserName` - Your Cloudant username. This is for accessing your `mood` database in Cloudant.
 
-- `cloudantPassword` - Your cloudant password. This is for accessing your `mood` database in cloudant.
+- `cloudantPassword` - Your Cloudant password. This is for accessing your `mood` database in Cloudant.
 
-- `appRegion` - Region where your bluemix app is hosted. Eg for US Dallas -`.ng.bluemix.net`.
+- `appRegion` - Region where your Bluemix app is hosted. For example,for US Dallas -`.ng.bluemix.net`.
 
-- `deviceIds` - The deviceId to which the message need to be send. This data will come from the `complaints` database.
-- `name` - Name of the customer. This data will come from the `complaints` database.
+- `deviceIds` - The deviceId to which the message need to be send. This data  is taken from the `complaints` database.
+- `name` - Name of the customer. This data is taken from the `complaints` database.
 
 
 ### Setup the OpenWhisk.
 
-For OpenWhisk setup you have to get the auth from the [Bluemix OpenWhisk](https://new-console.ng.bluemix.net/openwhisk/cli). Install OpenWhisk CLI and Auth.
+For OpenWhisk setup, you need to get authentication from [Bluemix OpenWhisk](https://new-console.ng.bluemix.net/openwhisk/cli). Install OpenWhisk CLI and Auth.
 
 ### Example App.
 
-  The example app have Feedback sending feature. The following steps should be completed before running the example app.
+  The example app have Feedback sending feature. Complete the following steps before running the example app:
 
 
-1. Create an OpenWhisk `action` using the following command.
+1. Create an OpenWhisk `action` using the command:
 
 	``` 
 	wsk action update  yourActionName sendFeedback.js -p version 'toneAnalyserVersion' -p cloudantUserName '' -p cloudantPassword '' -p appSecret '' -p appId '' -p appRegion '.ng.bluemix.net' 
@@ -101,25 +101,25 @@ For OpenWhisk setup you have to get the auth from the [Bluemix OpenWhisk](https:
 	```
 	wsk trigger create yourTriggerName --feed /yourNameSpace/CloudantPackage/changes -p dbname complaints -p includeDoc true -p username 'cloudantUsername' -p password 'cloudantPassword' -p host 'cloudantUsername.cloudant.com'
 	```
-3. Create OpenWhisk Rule to join `yourActionName` and `yourTriggerName`.
+3. Create OpenWhisk rule to join `yourActionName` and `yourTriggerName`.
 
 	```
 	wsk rule create --enable yourRule yourTriggerName yourActionName
 	```
-4. Enable the activation Poll.
+4. Enable the activation poll.
 
 	```
 	wsk activation poll
 	```
-5. Open the Example app in `XCode.app`. Go to the `Info.plist` file and add values for `cloudantPermission` and `cloudantUserName`. 
+5. Open the example app in `XCode.app`. Go to the `Info.plist` file and add values for `cloudantPermission` and `cloudantUserName`. 
     
     ![Alt text](Resource/plist.png?raw=true "Optional Title")
 
 6. Do `carthage update` in the application to add the [Bluemix Push service SDK](https://github.com/ibm-bluemix-mobile-services/bms-clientsdk-swift-push).
 
-7. Run the application and register for push notifications and close the app.
+7. Run the application and register for Push Notifications and close the app.
 
-8. Reopen the app again, it will ask for Feedback, go to the feedback page send a feed back.
+8. Reopen the app again. For feedback, go to the feedback page to send feedback.
 
 9. You will get push notifications as feedback response. 
 
