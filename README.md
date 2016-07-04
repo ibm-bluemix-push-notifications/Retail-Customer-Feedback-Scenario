@@ -1,7 +1,7 @@
-Mood-based push sample
+Retail-Customer-Feedback-Scenario
 ===========================================
 
- The mood-based push sample is an intuitive example usage of [Bluemix Push Notifications Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watson Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
+The Retail-Customer-Feedback-Scenario push sample is an intuitive example usage of [Bluemix Push Notifications Service](https://console.ng.bluemix.net/docs/services/mobilepush/index.html?pos=2) with the help of [Watson Tone Analyzer Service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html) , [OpenWhisk](https://developer.ibm.com/open/openwhisk/) and [Cloudant Service](https://cloudant.com/). 
 
 
    ![Alt text](Resource/flowchart.png?raw=true "Optional Title")
@@ -11,7 +11,7 @@ Mood-based push sample
 
 ## Overview
  
-The mood-based push sample implements the core features of the scenario described above. It showcases OpenWhisk, Watson APIs, and Cloudant with Bluemix Push Notifications service and demonstrates mobile integration capabilities. The Feedback app will register a feedback on the recently purchased items to the cloudant `complaints` database. The OpenWhisk will read changes in the `complaints` and will send data to Watson Tone Analyzer. The Tone Analyzer will send back the results to OpenWhisk. By analyzing the results, OpenWhisk will fetch appropriate message from Cloudant `moods` database and construct a valid message. This message gets pushed to `IBM Push Notifications service`, and is delivered to the mobile device.
+The Retail-Customer-Feedback-Scenario push sample implements the core features of the scenario described above. It showcases OpenWhisk, Watson APIs, and Cloudant with Bluemix Push Notifications service and demonstrates mobile integration capabilities. The Feedback app will register a feedback on the recently purchased items to the cloudant `complaints` database. The OpenWhisk will read changes in the `complaints` and will send data to Watson Tone Analyzer. The Tone Analyzer will send back the results to OpenWhisk. By analyzing the results, OpenWhisk will fetch appropriate message from Cloudant `moods` database and construct a valid message. This message gets pushed to `IBM Push Notifications service`, and is delivered to the mobile device.
  
 
 ## Requirements
