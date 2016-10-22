@@ -6,8 +6,6 @@ The Retail Customer Feedback push sample is an intuitive example usage of [Bluem
 
    ![Alt text](Resource/flowchart.png?raw=true "Optional Title")
 
-   [![Alt Demo video](Resource/video.png)](https://youtu.be/9Qx91S2ZO6I)
-
 
 ## Overview
 
@@ -84,7 +82,7 @@ For OpenWhisk setup, you need to get authentication from [Bluemix OpenWhisk](htt
 1. Create an OpenWhisk `action` using the command:
 
 	```
-	wsk action update  yourActionName sendFeedback.js -p version 'toneAnalyserVersion' -p cloudantUserName 'your cloudant user name' -p cloudantPassword 'your cloudant password' -p appSecret 'push app secret' -p appId 'push app GUID'
+	wsk action create  yourActionName sendFeedback.js -p version 'toneAnalyserVersion' -p cloudantUserName 'your cloudant user name' -p cloudantPassword 'your cloudant password' -p appSecret 'push app secret' -p appId 'push app GUID'
 	```
 
 2. Create a cloudant package binding.
@@ -107,7 +105,7 @@ For OpenWhisk setup, you need to get authentication from [Bluemix OpenWhisk](htt
 	```
 	wsk activation poll
 	```
-5. Open the example app in `XCode.app`. Go to the `Info.plist` file and add values for `cloudantPermission` and `cloudantUserName`.
+5. Open the example app in `XCode.app`. Go to the `Info.plist` file and add values.
 
     ![Alt text](Resource/plist.png?raw=true "Optional Title")
 

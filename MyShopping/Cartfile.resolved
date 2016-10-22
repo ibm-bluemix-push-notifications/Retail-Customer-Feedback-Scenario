@@ -1,0 +1,5 @@
+github "Orderella/PopupDialog" "0.5.0"
+github "ibm-bluemix-mobile-services/bms-clientsdk-swift-analytics-api" "2.0.0"
+github "openwhisk/openwhisk-client-swift" "0.2.2"
+github "ibm-bluemix-mobile-services/bms-clientsdk-swift-core" "2.0.2"
+github "ibm-bluemix-mobile-services/bms-clientsdk-swift-push" "2.0.01"
